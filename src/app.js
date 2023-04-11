@@ -7,7 +7,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 require('@databases/mongo')
-// require('../src/databases/redis')
+// require('@databases/redis')
 
 const app = express()
 app.use(bodyParser.json())
@@ -15,7 +15,7 @@ app.use(morgan('dev'))
 app.use(helmet())
 app.use(cors())
 app.use(compression())
-app.use(require('./routers/index'))
+app.use(require('@routers/index'))
 
 const server = configureSocket(app)
 

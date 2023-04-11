@@ -1,5 +1,5 @@
 const express = require('express')
-const authorizedAdmin = require('../middleware/authorization')
+const authorizedAdmin = require('@middleware/authorization.middleware')
 const consultancyService = require('../services/consultancy.service')
 const router = express.Router()
 

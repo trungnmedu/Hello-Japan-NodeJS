@@ -1,5 +1,5 @@
 const { OAuth2Client } = require("google-auth-library")
-const { clientId, clientSecret } = require('../configs/oauth.config')
+const { clientId, clientSecret } = require('@configs/oauth.config')
 
 class GoogleAuth {
 

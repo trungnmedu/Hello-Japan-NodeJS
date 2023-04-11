@@ -5,7 +5,7 @@ const sanitize = require("mongo-sanitize");
 class ConsultancyService {
     static async findConsultancyById(id) {
         if (id) {
-            return await Consultancy.findOne(sanitize({ id }))
+            return Consultancy.findOne(sanitize({ id }))
         }
         return null
     }
@@ -18,17 +18,16 @@ class ConsultancyService {
             return result
         }
 
-
         return Consultancy.create(consultancy)
     }
 
     static async getALlConsultancy() {
-        return await ConsultancyService.find({}, { _id: 0 })
+        return Consultancy.find({}, { _id: 0 })
     }
 
     static async findByIdAndUpdate(consultancy) {
         const { id } = consultancy
-        return await ConsultancyService.findOneAndUpdate(
+        return Consultancy.findOneAndUpdate(
             sanitize({ id }),
             { '$set': sanitize(consultancy) }
         )

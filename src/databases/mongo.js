@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { host, name, port } = require('@configs/mongo.config')
+
 class Database {
 
     constructor() {

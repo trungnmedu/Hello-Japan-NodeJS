@@ -1,4 +1,4 @@
-const { verifyToken } = require("../utils/jwt");
+const { verifyToken } = require("../utils/jwt.util");
 
 const authorizedAdmin = (req, res, next) => {
     try {

@@ -1,9 +1,9 @@
 const express = require('express')
-const GoogleAuth = require('../helpers/oauth')
-const authenticated = require('../middleware/authentication')
+const GoogleAuth = require('../helpers/oauth.helper')
+const authenticated = require('@middleware/authentication.middleware')
 const AccountService = require('../services/account.service')
 const router = express.Router()
-const { decodedToken, generateToken } = require('../utils/jwt')
+const { decodedToken, generateToken } = require('../utils/jwt.util')
 
 router.post(
     '/google-auth',
