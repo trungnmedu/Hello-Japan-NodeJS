@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const SECRET = "trungnmse150182"
 const TIME_EXPIRE = '1h'
 
-
 class JwtUtil {
     static decodedToken = (token) => {
         const payload = token.split('.').at(1)

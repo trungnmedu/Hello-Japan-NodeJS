@@ -4,7 +4,7 @@ const dev = {
     name: process.env.MONGO_DB_NAME
 }
 
-const config = { dev }
+const config = {dev}
 const env = process.env.NODE_ENV
 
 module.exports = config[env]

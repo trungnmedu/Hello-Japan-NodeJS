@@ -1,7 +1,7 @@
 const GoogleAuth = require("@helpers/oauth.helper")
 const AccountService = require("@services/account.service")
 const SuccessResponse = require("@helpers/success.helper")
-const { HTTP_CODE } = require("@constants/http.constant")
+const {HTTP_CODE} = require("@constants/http.constant")
 const JwtUtil = require("@utils/jwt.util")
 const Account = require("@models/account.model")
 
@@ -10,8 +10,8 @@ class AccessService {
     static async googleAuthenticated(code) {
         const token = await GoogleAuth.exchangeTokenByCode(code)
 
-        const { name, picture, email } = JwtUtil.decodedToken(token)
-        const account = await AccountService.findOrCreateAccount({ email, avatar: picture, name })
+        const {name, picture, email} = JwtUtil.decodedToken(token)
+        const account = await AccountService.findOrCreateAccount({email, avatar: picture, name})
 
         const accessToken = JwtUtil.generateToken(
             {

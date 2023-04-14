@@ -1,12 +1,12 @@
 const express = require('express')
 const authorizedAdmin = require('@middleware/authorization.middleware')
-const { studyPartnerService } = require('../services/partner.service')
+const {studyPartnerService} = require('../services/partner.service')
 const router = express.Router()
 
 router.post(
     '/partner-study',
     authorizedAdmin,
-    async ({ body }, response) => {
+    async ({body}, response) => {
         const partner = await studyPartnerService.addStudyPartner(body)
         response.send(partner)
     }
@@ -15,7 +15,7 @@ router.post(
 router.put(
     '/partner-study',
     authorizedAdmin,
-    async ({ body }, response) => {
+    async ({body}, response) => {
         await studyPartnerService.updateStudyPartner(body)
         response.send(200)
     }
@@ -24,7 +24,7 @@ router.put(
 router.delete(
     '/partner-study',
     authorizedAdmin,
-    async ({ body }, response) => {
+    async ({body}, response) => {
         await studyPartnerService.deleteStudyPartner(body)
         response.sendStatus(200)
     }

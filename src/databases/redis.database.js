@@ -1,7 +1,7 @@
-const { host, port } = require('@configs/redis.config')
+const {host, port} = require('@configs/redis.config')
 const redisDatabase = require('redis')
 
-const client = redisDatabase.createClient({ host, port })
+const client = redisDatabase.createClient({host, port})
 
 client.on(
     'connect',

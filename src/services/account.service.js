@@ -1,9 +1,9 @@
 const Account = require("@models/account.model");
 const sanitize = require("mongo-sanitize");
 
-class AccountService{
+class AccountService {
     static async findAccount(account) {
-        const { id, phone, email } = account
+        const {id, phone, email} = account
 
         const filter = {}
 
@@ -29,7 +29,7 @@ class AccountService{
             return result
         }
 
-        return  Account.create(
+        return Account.create(
             {
                 ...account,
                 id: Date.now().toString()

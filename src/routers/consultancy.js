@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post(
     '/consultancy',
-    async ({ body }, response) => {
+    async ({body}, response) => {
         const consultancy = consultancyService.findOrCreateConsultancy(body)
         response.send(consultancy)
     }
@@ -23,7 +23,7 @@ router.get(
 router.put(
     '/consultancy',
     authorizedAdmin,
-    async ({ body }, response) => {
+    async ({body}, response) => {
         const consultancy = await consultancyService.findByIdAndUpdate(body)
         response.send(consultancy)
     }

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { host, name, port } = require('@configs/mongo.config')
+const {host, name, port} = require('@configs/mongo.config')
 
 class Database {
 
@@ -10,7 +10,7 @@ class Database {
     _connect() {
         const connectionString = `mongodb://${host}:${port}/${name}`
         mongoose.set('debug', 1)
-        mongoose.set('debug', { color: true })
+        mongoose.set('debug', {color: true})
 
         mongoose.connect(
             connectionString,

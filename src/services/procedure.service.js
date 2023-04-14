@@ -6,8 +6,8 @@ class ProcedureService {
     async findOneByAccountId(accountId) {
         if (accountId) {
             return await ProcedureService.findOne(
-                sanitize({ accountId }),
-                { _id: 0 }
+                sanitize({accountId}),
+                {_id: 0}
             )
         }
         return null
@@ -16,8 +16,8 @@ class ProcedureService {
     async findAllByAccountId(accountId) {
         if (accountId) {
             return await ProcedureService.find(
-                sanitize({ accountId }),
-                { _id: 0 }
+                sanitize({accountId}),
+                {_id: 0}
             )
         }
         return null

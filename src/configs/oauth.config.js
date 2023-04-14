@@ -3,7 +3,7 @@ const dev = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET
 }
 
-const config = { dev }
+const config = {dev}
 const env = process.env.NODE_ENV
 
 module.exports = config[env]
