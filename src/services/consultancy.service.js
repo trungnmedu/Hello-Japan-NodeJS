@@ -1,4 +1,4 @@
-const Consultancy = require("@models/consultancy");
+const Consultancy = require("@models/consultancy.model");
 const sanitize = require("mongo-sanitize");
 
 

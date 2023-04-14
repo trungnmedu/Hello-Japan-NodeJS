@@ -7,7 +7,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const { defaultNotfound, errorHandler } = require('@helpers/handler.helper')
 
-require('@databases/mongo')
+require('@databases/mongo.database')
 // require('@databases/redis')
 
 const app = express()

@@ -1,4 +1,4 @@
-const AuthService = require("@services/account.service");
+const AuthService = require("@services/access.service");
 
 class AccessController {
     static async googleAuthenticated({ body: code }, res) {

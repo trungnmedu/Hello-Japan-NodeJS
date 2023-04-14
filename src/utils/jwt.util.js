@@ -26,5 +26,4 @@ class JwtUtil {
     }
 }
 
-
 module.exports = JwtUtil

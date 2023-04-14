@@ -1,4 +1,6 @@
 const { verifyToken } = require("../utils/jwt.util");
+const ErrorResponse = require("@helpers/error.helper")
+const {HTTP_CODE} = require("@constants/http.constant");
 
 const authenticated = (req, res, next) => {
     try {
@@ -8,7 +10,7 @@ const authenticated = (req, res, next) => {
         req.role = role
         next()
     } catch {
-        res.status(401).send({ error: 'Please authenticate.' })
+        throw ErrorResponse.builder(HTTP_CODE.UNAUTHORIZED, "Unauthenticated, login again.")
     }
 }
 
