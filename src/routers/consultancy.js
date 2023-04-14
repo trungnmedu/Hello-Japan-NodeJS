@@ -1,32 +1,26 @@
 const express = require('express')
 const authorizedAdmin = require('@middleware/authorization.middleware')
 const consultancyService = require('../services/consultancy.service')
+const { wrapperAsyncHandler } = require('@helpers/handler.helper')
+const ConsultancyController = require('@controllers/consultancy.controller')
 const router = express.Router()
 
 router.post(
     '/consultancy',
-    async ({body}, response) => {
-        const consultancy = consultancyService.findOrCreateConsultancy(body)
-        response.send(consultancy)
-    }
+    wrapperAsyncHandler(ConsultancyController.registerConsultancy)
 )
+
+router.use('/consultancy', authorizedAdmin)
 
 router.get(
     '/consultancy',
-    authorizedAdmin,
-    async (_, response) => {
-        const consultancies = await consultancyService.getALlConsultancy()
-        response.send(consultancies)
-    }
+    wrapperAsyncHandler(ConsultancyController.getAllConsultancy)
 )
+
 
 router.put(
     '/consultancy',
-    authorizedAdmin,
-    async ({body}, response) => {
-        const consultancy = await consultancyService.findByIdAndUpdate(body)
-        response.send(consultancy)
-    }
+    wrapperAsyncHandler(ConsultancyController.updateConsultancy)
 )
 
 module.exports = router

@@ -1,10 +1,11 @@
-const {HTTP_CODE, HTTP_REASON} = require("@constants/http.constant")
-const {NODE_ENV} = require("@configs/app.config")
+const { HTTP_CODE, HTTP_REASON } = require("@constants/http.constant")
+const { NODE_ENV } = require("@configs/app.config")
 
 class ErrorResponse extends Error {
     constructor(status, cause, trace) {
         super(cause)
         this.error = true
+        this.success = false
         this.status = status
         this.cause = NODE_ENV === "dev" ? cause : "Exception."
         this.trace = NODE_ENV === "dev" ? trace : "Trace is empty."

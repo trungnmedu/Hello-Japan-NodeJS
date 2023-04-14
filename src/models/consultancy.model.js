@@ -38,6 +38,6 @@ const consultancySchema = new mongoose.Schema(
     }
 )
 
-const ConsultancyModel = mongoose.model('ConsultancyModel', consultancySchema)
+const Consultancy = mongoose.model('Consultancy', consultancySchema)
 
-module.exports = ConsultancyModel
+module.exports = Consultancy

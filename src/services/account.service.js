@@ -3,7 +3,7 @@ const sanitize = require("mongo-sanitize");
 
 class AccountService {
     static async findAccount(account) {
-        const {id, phone, email} = account
+        const { id, phone, email } = account
 
         const filter = {}
 
