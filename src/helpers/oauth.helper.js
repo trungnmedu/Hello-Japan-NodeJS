@@ -1,17 +1,15 @@
 const { OAuth2Client } = require("google-auth-library")
 const { clientId, clientSecret } = require('@configs/oauth.config')
 
+const googleOAuth2Client = new OAuth2Client(clientId, clientSecret, 'postmessage')
+
 class GoogleAuth {
-
-    constructor() {
-        this.client = new OAuth2Client(clientId, clientSecret, 'postmessage')
-    }
-
-    async exchangeTokenByCode(code) {
-        const { tokens } = await this.client.getToken(code)
+    static async exchangeTokenByCode(code) {
+        GoogleAuth.c
+        const { tokens } = await googleOAuth2Client.getToken(code)
         const { id_token } = tokens
         return id_token
     }
 }
 
-module.exports = new GoogleAuth()
+module.exports = GoogleAuth

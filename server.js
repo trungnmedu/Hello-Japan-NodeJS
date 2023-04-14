@@ -2,11 +2,11 @@ require('dotenv').config()
 require('module-alias/register')
 const server = require('@src/app')
 
-const { port } = require('@src/configs/app.config')
+const { PORT } = require('@configs/app.config')
 
 server.listen(
-    port,
+    PORT,
     () => {
-        console.log(`Server start at: ${port}`);
+        console.log(`Server start at: ${PORT}`);
     }
 )

@@ -1,8 +1,12 @@
-const dev = {
-    port: process.env.APP_PORT
+const env = process.env.NODE_ENV
+
+const config = {
+    dev: {
+        PORT: process.env.APP_PORT || 5000,
+        NODE_ENV: env
+    }
 }
 
-const config = { dev }
-const env = process.env.NODE_ENV
+
 
 module.exports = config[env]
