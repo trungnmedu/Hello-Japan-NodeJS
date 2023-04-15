@@ -1,11 +1,11 @@
 const compression = require('compression')
 const express = require('express')
-const {default: helmet} = require('helmet')
+const { default: helmet } = require('helmet')
 const morgan = require('morgan')
 const configureSocket = require('@configs/socket.config')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const {defaultNotfound, errorHandler} = require('@helpers/handler.helper')
+const { defaultNotfound, errorHandler } = require('@helpers/handler.helper')
 
 require('@databases/mongo.database')
 // require('@databases/redis')

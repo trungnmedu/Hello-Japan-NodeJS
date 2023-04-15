@@ -23,6 +23,10 @@ const studyPartnerSchema = new Schema(
             type: String,
             required: false
         },
+        description: {
+            type: String,
+            required: false
+        },
         createdAt: {
             type: Date,
             default: Date.now()
@@ -32,6 +36,5 @@ const studyPartnerSchema = new Schema(
 
 const StudyPartner = mongoose.model('StudyPartner', studyPartnerSchema);
 
-module.exports = {
-    StudyPartner
-}
+module.exports = StudyPartner
+

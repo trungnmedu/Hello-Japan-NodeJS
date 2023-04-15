@@ -1,6 +1,5 @@
 const express = require('express')
 const authorizedAdmin = require('@middleware/authorization.middleware')
-const consultancyService = require('../services/consultancy.service')
 const { wrapperAsyncHandler } = require('@helpers/handler.helper')
 const ConsultancyController = require('@controllers/consultancy.controller')
 const router = express.Router()

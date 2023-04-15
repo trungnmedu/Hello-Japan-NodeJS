@@ -1,3 +1,5 @@
+const { HTTP_CODE } = require('@constants/http.constant')
+const ErrorResponse = require('@helpers/error.helper')
 const jwt = require('jsonwebtoken')
 const SECRET = "trungnmse150182"
 const TIME_EXPIRE = '1h'
@@ -21,7 +23,11 @@ class JwtUtil {
     }
 
     static verifyToken = (token) => {
-        return jwt.verify(token, SECRET)
+        try {
+            return jwt.verify(token, SECRET)
+        } catch (error) {
+            throw ErrorResponse.builder(HTTP_CODE.UNAUTHORIZED, "Token invalid.")
+        }
     }
 }
 
