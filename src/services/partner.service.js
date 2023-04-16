@@ -34,9 +34,9 @@ class StudyPartnerService {
         return SuccessResponse.builder(HTTP_CODE.OK, HTTP_REASON.OK, payload)
     }
 
-    static async deleteStudyPartner(partner) {
-        const { id } = partner
-        return await StudyPartner.findOneAndDelete(sanitize({ id }))
+    static async deleteStudyPartner(id) {
+        const payload = await StudyPartner.findOneAndDelete(sanitize({ id }))
+        return SuccessResponse.builder(HTTP_CODE.ACCEPTED, HTTP_REASON.ACCEPTED, payload)
     }
 
     static async updateStudyPartner(partner) {
@@ -48,8 +48,6 @@ class StudyPartnerService {
             )
         )
     }
-
-
 }
 
 

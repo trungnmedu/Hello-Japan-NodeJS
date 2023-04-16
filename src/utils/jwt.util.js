@@ -2,7 +2,7 @@ const { HTTP_CODE } = require('@constants/http.constant')
 const ErrorResponse = require('@helpers/error.helper')
 const jwt = require('jsonwebtoken')
 const SECRET = "trungnmse150182"
-const TIME_EXPIRE = '1h'
+const TIME_EXPIRE = '1 days'
 
 class JwtUtil {
     static decodedToken = (token) => {

@@ -10,6 +10,11 @@ class PartnerController {
         const { body: partner, file } = req;
         (await StudyPartnerService.addStudyPartner(partner, file)).send(res)
     }
+
+    static async removeStudyPartner({ body }, res) {
+        const { id } = body;
+        (await StudyPartnerService.deleteStudyPartner(id)).send(res)
+    }
 }
 
 module.exports = PartnerController
