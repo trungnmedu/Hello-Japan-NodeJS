@@ -7,6 +7,6 @@ const { PORT } = require('@configs/app.config')
 server.listen(
     PORT,
     () => {
-        console.log(`Server start at: ${PORT}`);
+        console.log(`Server start at: ${PORT}`)
     }
 )
