@@ -9,11 +9,11 @@ const stepSchema = new Schema(
         },
         description: {
             type: String,
-            required: true
+            required: false
         },
         status: {
             type: String,
-            enum: ['PROCESS', 'DONE'],
+            enum: ['PROCESSING', 'DONE', 'REJECT'],
             required: true
         }
     }
@@ -46,6 +46,10 @@ const procedureSchema = new Schema(
             type: Boolean,
             required: false,
             default: false
+        },
+        vocation: {
+            type: String,
+            required: false
         },
         steps: [stepSchema]
     }

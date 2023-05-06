@@ -1,4 +1,4 @@
-const { verifyToken } = require("../utils/jwt.util");
+const { verifyToken } = require("@utils/jwt.util");
 const ErrorResponse = require("@helpers/error.helper")
 const { HTTP_CODE } = require("@constants/http.constant");
 

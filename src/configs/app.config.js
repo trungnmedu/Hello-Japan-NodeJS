@@ -2,7 +2,8 @@ const env = process.env.NODE_ENV
 
 const config = {
     dev: {
-        PORT: process.env.APP_PORT || 5000,
+        APP_PORT: process.env.APP_PORT || 8000,
+        SOCKET_PORT: process.env.SOCKET_PORT || 6000,
         NODE_ENV: env
     }
 }
