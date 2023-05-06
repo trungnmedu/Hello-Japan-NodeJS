@@ -1,10 +1,10 @@
 const admin = require("firebase-admin")
 
-const serviceAccount = require("../../firebase-config.json")
+const firebaseConfig = require("../../firebase-config.json")
 
 admin.initializeApp(
     {
-        credential: admin.credential.cert(serviceAccount),
+        credential: admin.credential.cert(firebaseConfig),
         storageBucket: "hello-japan-exe.appspot.com"
     }
 )
