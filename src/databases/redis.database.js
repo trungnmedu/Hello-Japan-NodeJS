@@ -1,22 +1,40 @@
-const {host, port} = require('@configs/redis.config')
+const {HOST, PORT} = require('@configs/redis.config')
 const redisDatabase = require('redis')
 
-const client = redisDatabase.createClient({host, port})
+class RedisDatabase{
+    static instance = redisDatabase.createClient(
+        {
+            url: `redis://${HOST}:${PORT}`
+        }
+    )
 
-client.on(
-    'connect',
-    () => {
-        console.log('Redis client connected!')
+    static async connect () {
+        RedisDatabase.instance.on(
+            'connect',
+            () => {
+                console.log('Redis client connected!')
+            }
+        )
+
+        RedisDatabase.instance.on(
+            'error',
+            (error) => {
+                console.log(error)
+            }
+        )
+
+        await RedisDatabase.instance.connect()
     }
-)
+    static async getInstance() {
+        if(!RedisDatabase.instance.isReady){
+            await RedisDatabase.connect()
+        }
 
-client.on(
-    'error',
-    (error) => {
-        console.log(error)
+        return RedisDatabase.instance
     }
-)
 
-client.connect()
 
-module.exports = client
+
+}
+
+module.exports = RedisDatabase

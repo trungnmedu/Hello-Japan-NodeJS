@@ -19,7 +19,8 @@
     "@routers": "src/routers",
     "@services": "src/services",
     "@helpers": "src/helpers",
-    "@utils": "src/utils"
+    "@utils": "src/utils",
+    "@events": "src/events"
   },
   "license": "ISC",
   "dependencies": {

@@ -35,6 +35,9 @@
       "@utils/*": [
         "./src/utils/*"
       ],
+      "@events/*": [
+        "./src/events/*"
+      ],
       "@src/*": [
         "./src/*"
       ]

@@ -2,7 +2,7 @@ const Account = require("@models/account.model");
 const sanitize = require("mongo-sanitize");
 
 class AccountService {
-    static async findAccount(account) {
+    static findAccount(account) {
         const { id, phone, email } = account
 
         const filter = {}

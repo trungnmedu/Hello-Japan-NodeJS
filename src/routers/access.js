@@ -1,9 +1,7 @@
 const express = require('express')
-const GoogleAuth = require('../helpers/oauth.helper')
 const authenticated = require('@middleware/authentication.middleware')
-const AccountService = require('@services/access.service')
 const router = express.Router()
-const {wrapperAsyncHandler} = require('@helpers/handler.helper')
+const { wrapperAsyncHandler } = require('@helpers/handler.helper')
 const AccessController = require('@controllers/access.controller')
 
 router.post(

@@ -1,55 +1,23 @@
 const socketIo = require('socket.io');
-const http = require('http')
-const {verifyToken} = require("@utils/jwt.util");
+const http = require('http');
+const IOEvent = require('@events/io.event');
 
-const server = http.createServer()
-
-const io = socketIo(
-    server,
-    {
-        path: "/chat",
-        cors: {
-            origin: "*",
-            methods: "*"
+class SocketServer {
+    static server = http.createServer()
+    static io = socketIo(
+        SocketServer.server,
+        {
+            path: "/chat",
+            cors: {
+                origin: "*",
+                methods: "*"
+            }
         }
-    }
-)
-
-const onConnection = (socket) => {
-    const {id, handshake: {auth},} = socket
-
-    const {token} = auth
+    )
 }
 
-const onDisconnect = (socketId) => {
-    console.log(socketId)
-}
+SocketServer.io.use(IOEvent.authenticated)
+SocketServer.io.on('connection', IOEvent.onConnection)
+SocketServer.io.on('disconnect', IOEvent.onDisconnect)
 
-io.use(
-    (socket, next) => {
-        const {id, handshake: {auth}} = socket
-        const {token} = auth
-
-        try {
-            verifyToken(token)
-            return next()
-        } catch {
-            return next(new Error('Authentication failed'))
-        }
-    }
-)
-
-io.on(
-    'connection',
-    (socket) => {
-        onConnection(socket)
-
-        socket.on(
-            'disconnect',
-            () => onDisconnect(socket.id)
-        )
-    }
-)
-
-
-module.exports = server
+module.exports = SocketServer
