@@ -1,6 +1,7 @@
 const socketIo = require('socket.io');
 const http = require('http');
 const IOEvent = require('@events/io.event');
+const SocketEvent = require('@events/socket.event');
 
 class SocketServer {
     static server = http.createServer()
@@ -11,13 +12,14 @@ class SocketServer {
             cors: {
                 origin: "*",
                 methods: "*"
-            }
+            },
+            pingInterval: 2500,
+            pingTimeout: 2500
         }
     )
 }
 
 SocketServer.io.use(IOEvent.authenticated)
-SocketServer.io.on('connection', IOEvent.onConnection)
-SocketServer.io.on('disconnect', IOEvent.onDisconnect)
+SocketServer.io.on('connection', SocketEvent.registerSocketEvent)
 
 module.exports = SocketServer
