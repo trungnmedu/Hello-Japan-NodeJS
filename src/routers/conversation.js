@@ -10,4 +10,9 @@ router.get(
     wrapperAsyncHandler(ConversationController.getConversations)
 )
 
+router.get(
+    '/get-admin',
+    wrapperAsyncHandler(ConversationController.getAdmin)
+)
+
 module.exports = router

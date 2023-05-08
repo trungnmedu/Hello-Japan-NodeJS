@@ -1,7 +1,5 @@
 const socketIo = require('socket.io');
-const http = require('http');
-const IOEvent = require('@events/io.event');
-const SocketEvent = require('@events/socket.event');
+const http = require('http')
 
 class SocketServer {
     static server = http.createServer()
@@ -18,8 +16,5 @@ class SocketServer {
         }
     )
 }
-
-SocketServer.io.use(IOEvent.authenticated)
-SocketServer.io.on('connection', SocketEvent.registerSocketEvent)
 
 module.exports = SocketServer

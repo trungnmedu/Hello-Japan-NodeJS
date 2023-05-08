@@ -1,20 +1,18 @@
 require('dotenv').config()
 require('module-alias/register')
-const server = require('@src/app')
-
-
+const app = require('@src/app')
+const socket = require('@src/socket')
 
 const { APP_PORT, SOCKET_PORT } = require('@configs/app.config')
-const SocketServer = require('@configs/socket.config')
 
-server.listen(
+app.listen(
     APP_PORT,
     () => {
         console.log(`Server start at: ${APP_PORT}`)
     }
 )
 
-SocketServer.server.listen(
+socket.listen(
     SOCKET_PORT,
     () => {
         console.log(`Socket server start at: ${SOCKET_PORT}`)

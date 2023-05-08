@@ -2,14 +2,6 @@ const ChatService = require("@services/chat.service")
 const { verifyToken } = require("@utils/jwt.util")
 
 class IOEvent {
-
-
-    static async onDisconnect(socket) {
-        const { id, userId } = socket
-        console.log(`USER:: ${userId} SOCKET:: ${id} REMOVED`);
-        await ChatService.removeClient(userId, id)
-    }
-
     static async authenticated(socket, next) {
         const { handshake: { auth } } = socket
 

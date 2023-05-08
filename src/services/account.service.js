@@ -36,6 +36,10 @@ class AccountService {
             }
         )
     }
+
+    static async findOne(filter){
+        return Account.findOne(filter)
+    }
 }
 
 module.exports = AccountService
