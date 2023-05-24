@@ -19,6 +19,10 @@ const studyPartnerSchema = new Schema(
             type: String,
             required: false
         },
+        link: {
+            type: String,
+            required: false
+        },
         logo: {
             type: String,
             required: false

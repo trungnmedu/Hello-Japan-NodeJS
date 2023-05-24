@@ -7,9 +7,10 @@ const SocketServer = require('@configs/socket.config')
 const ErrorResponse = require("@helpers/error.helper")
 
 class ConversationService {
-    static async clientSendMessage(conversation, message) {
+    static async sendMessage(conversation, message) {
         const {clientId} = conversation
-        const {receiver} = message
+        const {receiver, sender} = message
+
 
         await Conversation.findOneAndUpdate(
             {clientId},
@@ -24,8 +25,8 @@ class ConversationService {
             }
         )
 
-        const clientSocketIds = await (await RedisDatabase.getInstance()).lRange(clientId, 0, -1)
-        clientSocketIds.forEach(id => SocketServer.io.to(id).emit("chat", message))
+        const clientSocketIds = await (await RedisDatabase.getInstance()).lRange(sender, 0, -1)
+        clientSocketIds.forEach(id => SocketServer.io.to(id).emit("chat", {clientId, message}))
 
         const adminSocketIds = await (await RedisDatabase.getInstance()).lRange(receiver, 0, -1)
         adminSocketIds.forEach(id => SocketServer.io.to(id).emit("chat", {clientId, message}))
@@ -38,15 +39,14 @@ class ConversationService {
 
         const {messages, ...conversation} = await Conversation.findOne({clientId}).lean()
 
-        const {type} = conversation
-
         let payload = {
             conversation,
             messages
         }
 
-        if (type === "PRIVATE") {
-            const {name, avatar} = await AccountService.findAccount({id: clientId})
+        const account = await AccountService.findAccount({id: clientId})
+        if (account) {
+            const {name, avatar} = account
             payload = {
                 conversation: {
                     name,
@@ -56,6 +56,7 @@ class ConversationService {
                 messages
             }
         }
+
         return SuccessResponse.builder(HTTP_CODE.OK, HTTP_REASON.OK, payload)
     }
 
@@ -66,18 +67,20 @@ class ConversationService {
             const payload = await Promise.all(
                 conversations.map(
                     async (conversation) => {
-                        const {clientId, type} = conversation
-                        if (type === "GUEST") {
-                            return conversation
+                        const {clientId} = conversation
+
+                        const account = await AccountService.findAccount({id: clientId})
+                        if (account) {
+                            const {name, avatar} = account
+                            return {
+                                name,
+                                avatar,
+                                ...conversation
+                            }
+
                         }
 
-                        const {name, avatar} = await AccountService.findAccount({id: clientId})
-
-                        return {
-                            name,
-                            avatar,
-                            ...conversation
-                        }
+                        return conversation
                     }
                 )
             )

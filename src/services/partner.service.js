@@ -13,7 +13,7 @@ class StudyPartnerService {
     }
 
     static async addStudyPartner(partner, file) {
-        const { name, address, phone, description } = partner
+        const { name, address, phone, description, link } = partner
         let logo = null
         if (file) {
             logo = await BucketFirebaseService.uploadFile(file)
@@ -27,7 +27,8 @@ class StudyPartnerService {
                 address,
                 phone,
                 logo,
-                description
+                description,
+                link
             }
         )
 

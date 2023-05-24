@@ -15,24 +15,25 @@ class SocketEvent {
 
     static async onChat(socket, message) {
         const {userId, credential} = socket
+        const {receiver} = message
 
-        const conversation = {
+        let conversation = {
             clientId: userId,
-            type: credential ? "PRIVATE" : "GUEST"
         }
 
-        if (typeof credential === 'object' && credential?.role === "ADMIN") {
-            return
+        if(credential && credential?.role === "ADMIN"){
+            conversation = {
+                clientId: receiver
+            }
         }
 
-        await ConversationService.clientSendMessage(
+        await ConversationService.sendMessage(
             conversation,
             {
                 ...message,
                 sender: userId
             }
         )
-
     }
 
     static async registerSocketEvent(socket) {

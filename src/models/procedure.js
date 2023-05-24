@@ -1,23 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const stepSchema = new Schema(
-    {
-        name: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String,
-            required: false
-        },
-        status: {
-            type: String,
-            enum: ['PROCESSING', 'DONE', 'REJECT'],
-            required: true
-        }
-    }
-)
 
 const procedureSchema = new Schema(
     {
@@ -47,11 +30,31 @@ const procedureSchema = new Schema(
             required: false,
             default: false
         },
-        vocation: {
-            type: String,
+        target: {
+            type: Object,
             required: false
         },
-        steps: [stepSchema]
+        steps: {
+            type: [
+                {
+                    name: {
+                        type: String,
+                        required: true
+                    },
+                    description: {
+                        type: String,
+                        required: false
+                    },
+                    status: {
+                        type: String,
+                        enum: ['PROCESSING', 'PENDING', 'DONE', 'REJECT'],
+                        required: true,
+                        default: "PENDING"
+                    }
+                }
+            ],
+            required: false
+        }
     }
 )
 
