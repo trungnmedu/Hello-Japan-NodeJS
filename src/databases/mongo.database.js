@@ -10,7 +10,7 @@ class Database {
         let connectionString = `mongodb://${url}/${name}`
 
         if (username.length && password.length) {
-            connectionString = `mongodb://${username}:${password}@${url}/${name}`
+            connectionString = `mongodb+srv://${username}:${password}@${url}/${name}?retryWrites=true&w=majority`
         }
         // mongoose.set('debug', 1)
         // mongoose.set('debug', { color: true })
@@ -19,8 +19,7 @@ class Database {
         mongoose.connect(
             connectionString,
             {
-                maxPoolSize: 50,
-
+                maxPoolSize: 50
             }
         ).then(
             (_) => console.log('Establish connection success!')
