@@ -1,7 +1,6 @@
 const ErrorResponse = require("@src/helpers/error.helper")
-const {HTTP_CODE, HTTP_REASON} = require("@constants/http.constant")
-const {ENV_MODE} = require("@configs/app.config")
-const {JsonWebTokenError, TokenExpiredError, NotBeforeError} = require("jsonwebtoken");
+const { HTTP_CODE, HTTP_REASON } = require("@constants/http.constant")
+const { JsonWebTokenError, TokenExpiredError, NotBeforeError } = require("jsonwebtoken");
 
 
 const defaultNotfound = (res, req, next) => {
@@ -10,7 +9,7 @@ const defaultNotfound = (res, req, next) => {
 
 const errorHandler = (error, req, res, _) => {
     if (error instanceof ErrorResponse) {
-        const {status, message} = error
+        const { status, message } = error
         res.status(status).json(error)
         return
     }
@@ -20,7 +19,7 @@ const errorHandler = (error, req, res, _) => {
         return
     }
 
-    const {message, stack} = error
+    const { message, stack } = error
     console.log(stack)
     res.status(HTTP_CODE.INTERNAL_SERVER_ERROR).send(ErrorResponse.builder(HTTP_CODE.INTERNAL_SERVER_ERROR, message, stack))
 }

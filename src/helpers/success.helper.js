@@ -1,5 +1,4 @@
 const { HTTP_CODE, HTTP_REASON } = require("@constants/http.constant")
-const lodash = require('lodash')
 
 class SuccessResponse {
     constructor(status, message, payload, options) {
