@@ -1,0 +1,8 @@
+services:
+  - name: Backend
+    type: web
+    port: 8080
+
+  - name: Websocket
+    type: web
+    port: 5000
