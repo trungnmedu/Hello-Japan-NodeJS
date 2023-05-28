@@ -47,9 +47,9 @@ const procedureSchema = new Schema(
                     },
                     status: {
                         type: String,
-                        enum: ['PROCESSING', 'PENDING', 'DONE', 'REJECT'],
+                        enum: ['PROCESSING', 'DONE', 'REJECT', 'PENDING'],
                         required: true,
-                        default: "PENDING"
+                        default: "PROCESSING"
                     }
                 }
             ],

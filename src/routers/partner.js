@@ -6,20 +6,20 @@ const PartnerController = require('@controllers/partner.controller')
 const authorizedAdmin = require('@middleware/authorization.middleware')
 
 router.get(
-    '/partner-study',
-    wrapperAsyncHandler(PartnerController.getAllStudyPartner)
+    '/partner',
+    wrapperAsyncHandler(PartnerController.getAllPartner)
 )
 
-router.use('/partner-study', authorizedAdmin)
+router.use('/partner', authorizedAdmin)
 
 router.post(
-    '/partner-study',
+    '/partner',
     multer().single('file'),
     wrapperAsyncHandler(PartnerController.addStudyPartner)
 )
 
 router.delete(
-    '/partner-study',
+    '/partner',
     wrapperAsyncHandler(PartnerController.removeStudyPartner)
 )
 
