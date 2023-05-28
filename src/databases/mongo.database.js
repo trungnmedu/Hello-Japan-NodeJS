@@ -1,21 +1,26 @@
 const mongoose = require('mongoose')
-const {host, name, port} = require('@configs/mongo.config')
+const { url, name, username, password } = require('@configs/mongo.config')
 
 class Database {
 
     constructor() {
         this._connect()
     }
-
     _connect() {
-        const connectionString = `mongodb://${host}:${port}/${name}`
-        mongoose.set('debug', 1)
-        mongoose.set('debug', {color: true})
+        let connectionString = `mongodb://${url}/${name}`
 
+        if (username.length && password.length) {
+            connectionString = `mongodb://${username}:${password}@${url}/${name}`
+        }
+        // mongoose.set('debug', 1)
+        // mongoose.set('debug', { color: true })
+
+        console.log(connectionString);
         mongoose.connect(
             connectionString,
             {
-                maxPoolSize: 50
+                maxPoolSize: 50,
+
             }
         ).then(
             (_) => console.log('Establish connection success!')

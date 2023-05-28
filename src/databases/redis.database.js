@@ -1,10 +1,14 @@
-const { HOST, PORT } = require('@configs/redis.config')
+const { HOST, PORT, PASSWORD } = require('@configs/redis.config')
 const redisDatabase = require('redis')
 
 class RedisDatabase {
     static instance = redisDatabase.createClient(
         {
-            url: `redis://${HOST}:${PORT}`
+            password: PASSWORD,
+            socket: {
+                host: HOST,
+                port: PORT
+            }
         }
     )
 
