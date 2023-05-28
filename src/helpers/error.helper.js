@@ -1,5 +1,5 @@
 const { HTTP_CODE, HTTP_REASON } = require("@constants/http.constant")
-const { NODE_ENV } = require("@configs/app.config")
+const { NODE_ENV } = require("@configs/app.config") || {}
 
 class ErrorResponse extends Error {
     constructor(status, cause, trace) {
