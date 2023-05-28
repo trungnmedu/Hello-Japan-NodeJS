@@ -1,5 +1,5 @@
-require('dotenv').config()
 require('module-alias/register')
+require('dotenv').config()
 const app = require('@src/app')
 const socket = require('@src/socket')
 

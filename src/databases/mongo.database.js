@@ -15,7 +15,6 @@ class Database {
         // mongoose.set('debug', 1)
         // mongoose.set('debug', { color: true })
 
-        console.log(connectionString);
         mongoose.connect(
             connectionString,
             {
