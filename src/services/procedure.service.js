@@ -9,7 +9,7 @@ class ProcedureService {
             const steps = [
                 {
                     name: "Bước 1",
-                    description: "Nạp giấy tờ cái nhân",
+                    description: "Nạp giấy tờ cá nhân",
                     status: "PROCESSING"
                 },
                 {
@@ -67,12 +67,12 @@ class ProcedureService {
             const steps = [
                 {
                     name: "Bước 1",
-                    description: "Nạp giấy tờ cái nhân",
+                    description: "Nạp giấy tờ cá nhân",
                     status: "PROCESSING"
                 },
                 {
                     name: "Bước 2",
-                    description: "Liên công ty Nhật để phỏng vấn.",
+                    description: "Liên hệ công ty Nhật để phỏng vấn.",
                     status: "PENDING"
                 },
                 {
