@@ -4,7 +4,7 @@
     "description": "Backend of Hello Japan application",
     "main": "server.js",
     "scripts": {
-        "start": "node server"
+        "start": "node --watch server"
     },
     "author": "Minh Trung",
     "_moduleAliases": {
